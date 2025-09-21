@@ -6,12 +6,11 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  "projectId": "studio-7226675376-1ba2e",
-  "appId": "1:612753223979:web:f9167799b4e14446ff956e",
-  "apiKey": "AIzaSyC-iqRckm21PAfZaH_csb6XUbwPNop4MNI",
-  "authDomain": "studio-7226675376-1ba2e.firebaseapp.com",
-  "measurementId": "",
-  "messagingSenderId": "612753223979"
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
 };
 
 // Initialize Firebase
