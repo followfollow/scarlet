@@ -4,9 +4,10 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 import {
   onAuthStateChanged,
   GoogleAuthProvider,
-  signInWithPopup,
+  signInWithRedirect,
   signOut,
   User,
+  getRedirectResult,
 } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 
@@ -25,8 +26,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-      setLoading(false);
+      if (user) {
+        setUser(user);
+        setLoading(false);
+      } else {
+        getRedirectResult(auth)
+          .then((result) => {
+            if (result) {
+              setUser(result.user);
+            }
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error("Error getting redirect result:", error);
+            setLoading(false);
+          });
+      }
     });
 
     return () => unsubscribe();
@@ -38,7 +53,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       prompt: 'select_account'
     });
     try {
-      await signInWithPopup(auth, provider);
+      await signInWithRedirect(auth, provider);
     } catch (error) {
       console.error("Error signing in with Google: ", error);
     }
@@ -47,6 +62,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = async () => {
     try {
       await signOut(auth);
+      setUser(null);
     } catch (error) {
       console.error("Error signing out: ", error);
     }
