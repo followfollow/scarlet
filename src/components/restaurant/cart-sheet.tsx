@@ -18,10 +18,58 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useCart } from "@/hooks/use-cart";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ShoppingCart, Trash2 } from "lucide-react";
-import { formatCurrency } from "@/lib/utils";
+import { useAuth } from "@/hooks/use-auth";
+import { db } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 export function CartSheet() {
   const { cartItems, totalItems, totalPrice, updateItemQuantity, removeItem, clearCart } = useCart();
+  const { user } = useAuth();
+  const { toast } = useToast();
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  const handleCheckout = async () => {
+    if (!user) {
+      toast({
+        title: "Authentication required",
+        description: "Please sign in to place an order.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsCheckingOut(true);
+
+    try {
+      await addDoc(collection(db, "orders"), {
+        userId: user.uid,
+        userName: user.displayName,
+        userEmail: user.email,
+        items: cartItems.map(item => ({ id: item.id, name: item.name, quantity: item.quantity, price: item.price })),
+        totalPrice: totalPrice,
+        status: "pending",
+        createdAt: serverTimestamp(),
+      });
+
+      toast({
+        title: "Order placed!",
+        description: "Thank you for your order. We've received it.",
+      });
+      clearCart();
+    } catch (error) {
+      console.error("Error placing order: ", error);
+      toast({
+        title: "Error",
+        description: "Something went wrong while placing your order. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsCheckingOut(false);
+    }
+  };
+
 
   return (
     <Sheet>
@@ -102,7 +150,9 @@ export function CartSheet() {
                 <p>${totalPrice.toFixed(2)}</p>
               </div>
                <Button onClick={clearCart} variant="outline">Clear Cart</Button>
-              <Button size="lg">Proceed to Checkout</Button>
+              <Button size="lg" onClick={handleCheckout} disabled={isCheckingOut}>
+                {isCheckingOut ? "Placing Order..." : "Proceed to Checkout"}
+              </Button>
             </SheetFooter>
           </>
         ) : (
