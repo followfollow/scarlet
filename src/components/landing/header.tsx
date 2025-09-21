@@ -15,7 +15,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, User as UserIcon, ShoppingCart } from "lucide-react";
+import { LogOut, User as UserIcon } from "lucide-react";
+import { CartSheet } from "@/components/restaurant/cart-sheet";
+
 
 export function Header() {
   const [scrolled, setScrolled] = React.useState(false);
@@ -42,10 +44,7 @@ export function Header() {
           <span className="font-bold">The Golden Spoon</span>
         </Link>
         <div className="flex items-center gap-4">
-           <Button variant="ghost" size="icon">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="sr-only">Shopping Cart</span>
-            </Button>
+           <CartSheet />
           {loading ? (
             <div className="h-10 w-24 animate-pulse rounded-md bg-muted" />
           ) : user ? (

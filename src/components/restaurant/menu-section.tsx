@@ -1,10 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { useCart, type MenuItem } from "@/hooks/use-cart";
+import { useToast } from "@/hooks/use-toast";
 
-const menuItems = [
+
+const menuItems: MenuItem[] = [
   {
     id: "dish-burger",
     name: "Gourmet Burger",
@@ -44,6 +49,17 @@ const menuItems = [
 ];
 
 export function MenuSection() {
+  const { addItem } = useCart();
+  const { toast } = useToast();
+
+  const handleAddItem = (item: MenuItem) => {
+    addItem(item);
+    toast({
+      title: "Added to cart",
+      description: `${item.name} has been added to your cart.`,
+    });
+  };
+
   return (
     <section id="menu" className="py-16 sm:py-24">
       <div className="container mx-auto max-w-7xl px-4 lg:px-8">
@@ -79,7 +95,7 @@ export function MenuSection() {
                   <CardDescription className="flex-1">{item.description}</CardDescription>
                   <div className="mt-4 flex items-center justify-between">
                     <p className="text-lg font-bold text-primary">${item.price}</p>
-                    <Button size="sm">
+                    <Button size="sm" onClick={() => handleAddItem(item)}>
                       <Plus className="mr-2 h-4 w-4" />
                       Add
                     </Button>
