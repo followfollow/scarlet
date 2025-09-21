@@ -9,10 +9,10 @@ export function Footer() {
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="flex items-center gap-2">
             <Icons.logo className="h-5 w-5 text-primary" />
-            <span className="text-sm font-semibold">Scarlet Launchpad</span>
+            <span className="text-sm font-semibold">The Golden Spoon</span>
           </div>
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Scarlet Launchpad. All rights reserved.
+            &copy; {new Date().getFullYear()} The Golden Spoon. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link href="#" aria-label="Twitter">

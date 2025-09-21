@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
@@ -16,13 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, User as UserIcon } from "lucide-react";
-
-const navItems = [
-  { name: "Features", href: "#features" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "About", href: "#about" },
-];
+import { LogOut, User as UserIcon, ShoppingCart } from "lucide-react";
 
 export function Header() {
   const [scrolled, setScrolled] = React.useState(false);
@@ -46,20 +39,13 @@ export function Header() {
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <Icons.logo className="h-6 w-6 text-primary" />
-          <span className="font-bold">Scarlet Launchpad</span>
+          <span className="font-bold">The Golden Spoon</span>
         </Link>
-        <nav className="hidden items-center gap-6 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
         <div className="flex items-center gap-4">
+           <Button variant="ghost" size="icon">
+              <ShoppingCart className="h-5 w-5" />
+              <span className="sr-only">Shopping Cart</span>
+            </Button>
           {loading ? (
             <div className="h-10 w-24 animate-pulse rounded-md bg-muted" />
           ) : user ? (
@@ -98,7 +84,7 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button onClick={signInWithGoogle}>Sign in with Google</Button>
+            <Button onClick={signInWithGoogle}>Sign in</Button>
           )}
         </div>
       </div>

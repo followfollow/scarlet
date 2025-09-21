@@ -1,40 +1,46 @@
 {
   "placeholderImages": [
     {
-      "id": "feature-1",
-      "description": "A placeholder image for the first feature.",
-      "imageUrl": "https://picsum.photos/seed/feature1/600/400",
-      "imageHint": "technology interface"
+      "id": "hero-image",
+      "description": "A vibrant spread of delicious food on a table.",
+      "imageUrl": "https://picsum.photos/seed/restaurant-hero/1920/1080",
+      "imageHint": "gourmet food"
     },
     {
-      "id": "feature-2",
-      "description": "A placeholder image for the second feature.",
-      "imageUrl": "https://picsum.photos/seed/feature2/600/400",
-      "imageHint": "data analytics"
+      "id": "dish-burger",
+      "description": "A juicy gourmet burger with fries.",
+      "imageUrl": "https://picsum.photos/seed/burger/600/400",
+      "imageHint": "gourmet burger"
     },
     {
-      "id": "feature-3",
-      "description": "A placeholder image for the third feature.",
-      "imageUrl": "https://picsum.photos/seed/feature3/600/400",
-      "imageHint": "team collaboration"
+      "id": "dish-pasta",
+      "description": "A beautiful plate of spaghetti carbonara.",
+      "imageUrl": "https://picsum.photos/seed/pasta/600/400",
+      "imageHint": "pasta dish"
     },
     {
-      "id": "avatar-1",
-      "description": "An avatar for a testimonial.",
-      "imageUrl": "https://picsum.photos/seed/avatar1/100/100",
-      "imageHint": "person portrait"
+      "id": "dish-pizza",
+      "description": "A wood-fired margarita pizza.",
+      "imageUrl": "https://picsum.photos/seed/pizza/600/400",
+      "imageHint": "artisan pizza"
     },
     {
-      "id": "avatar-2",
-      "description": "An avatar for a testimonial.",
-      "imageUrl": "https://picsum.photos/seed/avatar2/100/100",
-      "imageHint": "professional headshot"
+      "id": "dish-salad",
+      "description": "A fresh and vibrant caesar salad.",
+      "imageUrl": "https://picsum.photos/seed/salad/600/400",
+      "imageHint": "fresh salad"
     },
     {
-      "id": "avatar-3",
-      "description": "An avatar for a testimonial.",
-      "imageUrl": "https://picsum.photos/seed/avatar3/100/100",
-      "imageHint": "person smiling"
+      "id": "dish-steak",
+      "description": "A perfectly cooked steak with asparagus.",
+      "imageUrl": "https://picsum.photos/seed/steak/600/400",
+      "imageHint": "grilled steak"
+    },
+    {
+      "id": "dish-dessert",
+      "description": "A slice of rich chocolate cake.",
+      "imageUrl": "https://picsum.photos/seed/dessert/600/400",
+      "imageHint": "chocolate cake"
     }
   ]
 }
