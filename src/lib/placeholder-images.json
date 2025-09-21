@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "feature-1",
+      "description": "A placeholder image for the first feature.",
+      "imageUrl": "https://picsum.photos/seed/feature1/600/400",
+      "imageHint": "technology interface"
+    },
+    {
+      "id": "feature-2",
+      "description": "A placeholder image for the second feature.",
+      "imageUrl": "https://picsum.photos/seed/feature2/600/400",
+      "imageHint": "data analytics"
+    },
+    {
+      "id": "feature-3",
+      "description": "A placeholder image for the third feature.",
+      "imageUrl": "https://picsum.photos/seed/feature3/600/400",
+      "imageHint": "team collaboration"
+    },
+    {
+      "id": "avatar-1",
+      "description": "An avatar for a testimonial.",
+      "imageUrl": "https://picsum.photos/seed/avatar1/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "avatar-2",
+      "description": "An avatar for a testimonial.",
+      "imageUrl": "https://picsum.photos/seed/avatar2/100/100",
+      "imageHint": "professional headshot"
+    },
+    {
+      "id": "avatar-3",
+      "description": "An avatar for a testimonial.",
+      "imageUrl": "https://picsum.photos/seed/avatar3/100/100",
+      "imageHint": "person smiling"
+    }
+  ]
 }
